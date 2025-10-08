@@ -1,0 +1,23 @@
+# Node.js dependencies - should be installed via package.json, not committed
+node_modules/
+
+# Node.js executables - platform-specific binaries that shouldn't be in version control
+node.exe
+npm
+npm.cmd
+npm.ps1
+npx
+npx.cmd
+npx.ps1
+corepack
+corepack.cmd
+nodevars.bat
+
+# Installation scripts - local setup files not needed in repository
+install_tools.bat
+
+# Environment files - contains sensitive configuration and secrets
+.env
+
+# Project-specific directory - may contain local data or temporary files
+coop/
