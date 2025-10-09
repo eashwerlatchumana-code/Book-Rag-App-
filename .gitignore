@@ -23,5 +23,3 @@ install_tools.bat
 coop/
 
 # Python virtual environments and packages
-ragapp/Lib/
-ragapp/Scripts/
