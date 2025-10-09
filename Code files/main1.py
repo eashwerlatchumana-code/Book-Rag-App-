@@ -14,5 +14,5 @@ def read_doc(directory):
     documents  = file_loader.load() #Defining the loaded document 
     return documents 
 
-doc = read_doc("./Python Programming.pdf")
+doc = read_doc("Code files")
 print(doc)
