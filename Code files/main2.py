@@ -1,6 +1,8 @@
-
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 #Importing required libraries 
-
+import warnings
+from langchain_core._api.deprecation import LangChainDeprecationWarning
 import langchain
 import pinecone 
 import openai
@@ -9,11 +11,16 @@ from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
 from langchain_openai import OpenAI
-from langchain_pinecone import PineconeVectorStore 
+from langchain_pinecone.vectorstores import Pinecone, PineconeVectorStore
 from pinecone import Pinecone
 from dotenv import load_dotenv
 load_dotenv()
+warnings.filterwarnings("ignore", category=LangChainDeprecationWarning) #Getting warnings from Langchain reagarding their update
+import os
+os.environ["PYTHONWARNINGS"] = "ignore"
 
+import warnings
+warnings.filterwarnings("ignore")
 #Reading a file 
 
 def read_doc(directory):
