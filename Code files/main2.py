@@ -1,12 +1,5 @@
-import sys
-if not sys.warnoptions:
-    import warnings
-    warnings.simplefilter("ignore")
 
-import os
-os.environ['PYTHONWARNINGS'] = 'ignore'
 # Importing required libraries 
-from langchain_core._api.deprecation import LangChainDeprecationWarning
 import langchain
 import pinecone 
 import openai
@@ -18,7 +11,9 @@ from langchain_openai import OpenAI
 from langchain_pinecone.vectorstores import Pinecone, PineconeVectorStore
 from pinecone import Pinecone
 from dotenv import load_dotenv
+from langchain.chains.question_answering import load_qa_chain
 load_dotenv()
+
 
 #Reading a file 
 
@@ -37,10 +32,27 @@ def chunks(docs, chuck_size = 400, chunck_overlap = 50):
     return splited_doc
 
 changed_doc = chunks(docs = doc) #This is chunked document 
-
+print(type(changed_doc))
 #embedding technique of OPEN AI 
 try:
     embeddings=OpenAIEmbeddings(api_key=os.getenv("OPENAI_API_KEY"))
-    print("hi")
 except Exception as E: 
     print(f"{E}, issue with finding llm api")
+vectors =embeddings.embed_query("TEST")
+print(len(vectors))
+
+#Vecter Serch DB in pincone 
+vectorstore = PineconeVectorStore.from_documents(documents=changed_doc, embedding=embeddings, 
+                                                 index_name = "langchain", pinecone_api_key = os.getenv("PINECONE_API_KEY")
+                                                 )
+
+#cosine similarity, retrive results from vector db 
+
+def retrive_query(query, k=2):
+    matching_results = vectorstore.similarity_search(query, k=k)
+    return matching_results
+
+#Using Load_qa_chain
+#Defining the llm i am going to use 
+llm = OpenAI(model="gpt-4o", temperature=0.5)
+chain = load_qa_chain()
