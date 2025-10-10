@@ -1,9 +1,10 @@
+import sys
+if not sys.warnoptions:
+    import warnings
+    warnings.simplefilter("ignore")
+
 import os
-os.environ['PYTHONWARNINGS'] = 'ignore::DeprecationWarning'
-
-import warnings
-warnings.filterwarnings("ignore")
-
+os.environ['PYTHONWARNINGS'] = 'ignore'
 # Importing required libraries 
 from langchain_core._api.deprecation import LangChainDeprecationWarning
 import langchain
@@ -40,6 +41,6 @@ changed_doc = chunks(docs = doc) #This is chunked document
 #embedding technique of OPEN AI 
 try:
     embeddings=OpenAIEmbeddings(api_key=os.getenv("OPENAI_API_KEY"))
-    print(embeddings)
+    print("hi")
 except Exception as E: 
     print(f"{E}, issue with finding llm api")
