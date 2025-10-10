@@ -1,9 +1,10 @@
+
 #Importing required libraries 
 import langchain
 import pinecone 
 import openai
 import os 
-from langchain.document_loaders import PyPDFDirectoryLoader
+from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
 from langchain_openai import OpenAI
@@ -19,3 +20,13 @@ def read_doc(directory):
     return document
 
 doc = read_doc("Code files")
+(type(doc)) # This is a list type 
+#breaking into chunks 
+
+def chunks(docs, chuck_size = 400, chunck_overlap = 50):
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size = chuck_size, chunk_overlap = chunck_overlap)
+    splited_doc = text_splitter.split_documents(docs)
+    return splited_doc
+
+changed_doc = chunks(docs = doc) #This is chunked document 
+
