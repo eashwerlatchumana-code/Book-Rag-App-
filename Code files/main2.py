@@ -1,5 +1,6 @@
 
 #Importing required libraries 
+
 import langchain
 import pinecone 
 import openai
@@ -10,7 +11,8 @@ from langchain_openai import OpenAIEmbeddings
 from langchain_openai import OpenAI
 from langchain_pinecone import PineconeVectorStore 
 from pinecone import Pinecone
-
+from dotenv import load_dotenv
+load_dotenv()
 
 #Reading a file 
 
@@ -30,3 +32,9 @@ def chunks(docs, chuck_size = 400, chunck_overlap = 50):
 
 changed_doc = chunks(docs = doc) #This is chunked document 
 
+#embedding technique of OPEN AI 
+try:
+    embeddings=OpenAIEmbeddings(api_key=os.getenv("OPENAI_API_KEY"))
+    print(embeddings)
+except Exception as E: 
+    print(f"{E}, issue with finding llm api")
