@@ -1,7 +1,10 @@
+import os
+os.environ['PYTHONWARNINGS'] = 'ignore::DeprecationWarning'
+
 import warnings
-warnings.filterwarnings("ignore", category=DeprecationWarning)
-#Importing required libraries 
-import warnings
+warnings.filterwarnings("ignore")
+
+# Importing required libraries 
 from langchain_core._api.deprecation import LangChainDeprecationWarning
 import langchain
 import pinecone 
@@ -15,12 +18,7 @@ from langchain_pinecone.vectorstores import Pinecone, PineconeVectorStore
 from pinecone import Pinecone
 from dotenv import load_dotenv
 load_dotenv()
-warnings.filterwarnings("ignore", category=LangChainDeprecationWarning) #Getting warnings from Langchain reagarding their update
-import os
-os.environ["PYTHONWARNINGS"] = "ignore"
 
-import warnings
-warnings.filterwarnings("ignore")
 #Reading a file 
 
 def read_doc(directory):
