@@ -5,6 +5,7 @@ import pinecone
 import openai
 import os 
 from langchain_community.document_loaders import PyPDFDirectoryLoader
+from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
 from langchain_openai import ChatOpenAI
@@ -47,7 +48,9 @@ except Exception as E:
 vectorstore = PineconeVectorStore(embedding=embeddings, 
                                                  index_name = "langchaintest1", pinecone_api_key = os.getenv("PINECONE_API_KEY")
                                                  )
-
+newdocument = PyPDFLoader("shortstory.pdf").load()
+vectorstore.add_documents(newdocument) #trying to add a new document (This can be done when you are trying add add new documents in the future)
+print("THIS IS VECTORSTORE",vectorstore)
 #cosine similarity, retrive results from vector db 
 
 def retrive_query(query, k=2):
@@ -62,7 +65,7 @@ chain = load_qa_chain(llm,chain_type="stuff" )
 #search the asnwer
 def retrive_ans(query):
     docsearch = retrive_query(query) #This is the document that is going to fetched from the vector data base 
-    # print(docsearch)
+    print("THIS IS DOCSEARCH",docsearch)
     response = chain.invoke({'input_documents' : docsearch, 'question':query})
     return response 
 question = ''
