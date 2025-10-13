@@ -23,3 +23,4 @@ install_tools.bat
 coop/
 
 # Python virtual environments and packages
+testragapp.py
