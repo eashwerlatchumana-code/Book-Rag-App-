@@ -38,7 +38,7 @@ def retrive_query(vectorstore, query, k=2):
     return matching_results
 
 
-llm = ChatOpenAI(model="gpt-4o", temperature=0.5, api_key=os.getenv("OPENAI_API_KEY"))
+llm = ChatOpenAI(model="gpt-4o", temperature=0.5, api_key="Insert your OpenAi ApiKey")
 chain = load_qa_chain(llm,chain_type="stuff" )
 
 def retrive_ans(query):
