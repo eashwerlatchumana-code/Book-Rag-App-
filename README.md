@@ -3,3 +3,5 @@ This functionality is used to create basic rag app by uploading pdf documents, m
  Uses langchain, OpenAi llm, and Pinecone Vector DB. 
 Also pip install all the requirements found in requirements.txt. Thanks, let me know how this code functionality works, happy to fix it! 
 - Eashwer V. L 
+
+Also Note this is only backend base functionality, there is no frontend 
