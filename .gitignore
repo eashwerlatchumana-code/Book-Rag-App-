@@ -1,0 +1,21 @@
+# Environment variables
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+.venv/
+venv/
+
+# Logs
+*.log
+logs/
+
+# User uploads
+uploads/
+user_uploads/
+
+# Claude Code
+.claude/
