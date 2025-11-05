@@ -4,12 +4,12 @@ A FastAPI-based Retrieval-Augmented Generation (RAG) chat application that allow
 
 ## Features
 
-- =Ú **Book Management**: Upload and process PDF documents
-- =¬ **Intelligent Chat**: Chat with AI about your uploaded books
-- = **RAG Technology**: Uses vector similarity search to find relevant content
-- =Ý **Chat History**: Maintain and retrieve conversation history
-- =d **User Management**: User registration and authentication
-- =€ **RESTful API**: Clean, well-documented REST API endpoints
+- **Book Management**: Upload and process PDF documents
+- **Intelligent Chat**: Chat with AI about your uploaded books
+- **RAG Technology**: Uses vector similarity search to find relevant content
+- **Chat History**: Maintain and retrieve conversation history
+- **User Management**: User registration and authentication
+- **RESTful API**: Clean, well-documented REST API endpoints
 
 ## Tech Stack
 
@@ -442,33 +442,33 @@ print(f"AI Response: {chat['answer']}")
 
 ```
 rag-chat-backend/
-   app/
-      __init__.py
-      database/           # Database repositories
-         base.py
-         users_repo.py
-         chats_repo.py
-         messages_repo.py
-         books_repo.py
-      models/             # Pydantic schemas
-         schemas.py
-      routers/            # API endpoints
-         users.py
-         chats.py
-         messages.py
-         books.py
-      services/           # Business logic
-         chat_service.py
-         book_processing_service.py
-         openai_service.py
-         pinecone_service.py
-         ragappfunction.py
-      utils/              # Utility functions
-          logger.py
-   main.py                 # FastAPI application entry point
-   requirements.txt        # Python dependencies
-   .env                    # Environment variables (not in git)
-   README.md              # This file
+  app/
+     __init__.py
+     database/           # Database repositories
+        base.py
+        users_repo.py
+        chats_repo.py
+        messages_repo.py
+        books_repo.py
+     models/             # Pydantic schemas
+        schemas.py
+     routers/            # API endpoints
+        users.py
+        chats.py
+        messages.py
+        books.py
+     services/           # Business logic
+        chat_service.py
+        book_processing_service.py
+        openai_service.py
+        pinecone_service.py
+        ragappfunction.py
+     utils/              # Utility functions
+         logger.py
+  main.py                 # FastAPI application entry point
+  requirements.txt        # Python dependencies
+  .env                    # Environment variables (not in git)
+  README.md              # This file
 ```
 
 ## How It Works
@@ -537,7 +537,7 @@ Error responses follow this format:
 
 ## CORS Configuration
 
-CORS is configured to allow all origins in development. For production, update the `allow_origins` in [main.py](main.py#L34):
+CORS is configured to allow all origins in development. For production, update the `allow_origins` in main.py:
 
 ```python
 app.add_middleware(
@@ -572,3 +572,13 @@ For issues and questions, please open an issue on the GitHub repository.
 - LangChain for RAG framework
 - FastAPI for the web framework
 - Supabase for database and storage
+
+---
+
+## Development Notes (Previous Implementation)
+
+1. Test1_ragapp was the original file where RAG app functions were built from scratch.
+2. 'Withimport' file and 'Ragappfunctions' file contain defined functions for each process: adding a doc, making it into chunks, uploading to the vectordb, etc.
+3. These functions were created to be reusable when building the RAG app from scratch.
+4. The 'shortstory' PDF used for testing is in the Co-Op folder, and code files are in the code-files directory.
+5. Note: Some LangChain functions used are deprecated and may show warnings, but this does not impact functionality.

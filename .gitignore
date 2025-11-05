@@ -17,5 +17,8 @@ logs/
 uploads/
 user_uploads/
 
+# Temporary files
+temp/
+
 # Claude Code
 .claude/
